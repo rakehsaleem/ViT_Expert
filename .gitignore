@@ -1,0 +1,49 @@
+# Model checkpoints and weights
+*.pth
+*.pt
+*.pkl
+*.h5
+*.hdf5
+
+# PyTorch model files
+*.pth.tar
+*.pth.tar.gz
+
+# Large model files
+**/checkpoints/**
+**/weights/**
+**/models/**
+
+# Cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Data files (if large)
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.csv
+*.json
+
+# Temporary files
+*.tmp
+*.temp

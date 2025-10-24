@@ -147,6 +147,12 @@ class SaliencyPredictionHead(nn.Module):
         # Reshape to spatial map
         batch_size = patch_saliency.size(0)
         spatial_size = int(self.num_patches ** 0.5)
+        
+        # Ensure we have the right number of patches
+        if patch_saliency.size(1) != self.num_patches:
+            # If we have more patches than expected, take the first num_patches
+            patch_saliency = patch_saliency[:, :self.num_patches, :]
+        
         saliency_map = patch_saliency.view(batch_size, spatial_size, spatial_size)
         
         # Upsample to original image size

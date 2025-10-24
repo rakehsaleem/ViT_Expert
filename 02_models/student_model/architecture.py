@@ -101,15 +101,13 @@ class EfficientSaliencyHead(nn.Module):
         
         # Efficient upsampling path
         self.upsample_path = nn.Sequential(
-            # Depthwise separable convolution
-            nn.Conv2d(in_channels, in_channels // 2, 3, padding=1, groups=in_channels),
-            nn.Conv2d(in_channels // 2, in_channels // 2, 1),
+            # Regular convolution (avoiding depthwise separable for now)
+            nn.Conv2d(in_channels, in_channels // 2, 3, padding=1),
             nn.BatchNorm2d(in_channels // 2),
             nn.ReLU(inplace=True),
             
             # Further reduction
-            nn.Conv2d(in_channels // 2, in_channels // 4, 3, padding=1, groups=in_channels // 2),
-            nn.Conv2d(in_channels // 4, in_channels // 4, 1),
+            nn.Conv2d(in_channels // 2, in_channels // 4, 3, padding=1),
             nn.BatchNorm2d(in_channels // 4),
             nn.ReLU(inplace=True),
             
